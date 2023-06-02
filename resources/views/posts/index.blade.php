@@ -14,7 +14,7 @@
                     </div>
                     <div class="card-body">
                         <p>{{$post->description}}</p>
-                        <small>{{$post->created}}</small>
+                        <small>{{$post->created_at->format('Y-m-d')}}</small>
                     </div>
                 </div>
             </div>
