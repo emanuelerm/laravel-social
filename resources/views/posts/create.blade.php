@@ -1,4 +1,4 @@
-@extends('layout.app')
+@extends('layouts.app')
 
 @section('content')
 	<div class="w-50 m-auto py-3">
@@ -13,7 +13,7 @@
 			</div>
 		@endif
 
-		<form action="{{ route('posts.store') }}" method="POST" class="d-flex flex-column align-items-center">
+		<form action="{{ route('admin.posts.store') }}" method="POST" class="d-flex flex-column align-items-center">
 			@csrf
 
 			<div class="p-1  flex-column align-items-center">
@@ -64,4 +64,12 @@
 					</div>
 				@enderror
 			</div>
+
+            <input type="date" name="created" id="created">
+
+            <div class="d-flex gap-1 justify-content-center">
+                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="reset" class="btn btn-primary">Reset</button>
+            </div>
+
 		</form>

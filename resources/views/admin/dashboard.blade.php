@@ -18,6 +18,12 @@
                     @endif
 
                     {{ __('You are logged in!') }}
+                    <div class="links">
+                        <ul>
+                            <li><a href="{{route('admin.posts.index')}}">Posts</a></li>
+                            <li><a href="{{route('admin.posts.create')}}">Create</a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>

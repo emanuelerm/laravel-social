@@ -13,7 +13,8 @@ class PostController extends Controller
      */
     public function index()
     {
-        
+        $posts = Post::all();
+        return view('posts.index', compact('posts'));
     }
 
     /**
@@ -38,7 +39,7 @@ class PostController extends Controller
         $newPost = new Post();
         $newPost->fill($form_data);
         $newPost->save();
-        return redirect()->route('posts.index');
+        return redirect()->route('admin.posts.index');
     }
 
     /**
@@ -47,9 +48,9 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Post $post)
     {
-        //
+        return view('posts.index', compact('post'));
     }
 
     /**
@@ -58,9 +59,9 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Post $post)
     {
-        //
+        return view('posts.index', compact('posts'));
     }
 
     /**
@@ -70,9 +71,11 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Post $post)
     {
-        //
+        $form_data = $request->all();
+        $post->update($form_data);
+        return redirect()->route('posts.show', $post->id);
     }
 
     /**
@@ -81,8 +84,9 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Post $post)
     {
-        //
+        $post->delete();
+        return redirect()->route('posts.index')->with('message', "{$post->title} has been deleted");
     }
 }
