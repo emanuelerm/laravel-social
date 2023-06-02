@@ -14,7 +14,7 @@
                     </div>
                     <div class="card-body">
                         <p>{{$post->description}}</p>
-                        <small>{{$post->created}}</small>
+                        <small>{{$post->updated_at}}</small>
                     </div>
                 </div>
             </div>

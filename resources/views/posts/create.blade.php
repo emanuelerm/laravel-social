@@ -65,11 +65,10 @@
 				@enderror
 			</div>
 
-            <input type="date" name="created" id="created">
 
-            <div class="d-flex gap-1 justify-content-center">
-                <button type="submit" class="btn btn-primary">Submit</button>
-                <button type="reset" class="btn btn-primary">Reset</button>
-            </div>
+			<div class="d-flex gap-1 justify-content-center">
+				<button type="submit" class="btn btn-primary">Submit</button>
+				<button type="reset" class="btn btn-primary">Reset</button>
+			</div>
 
 		</form>
