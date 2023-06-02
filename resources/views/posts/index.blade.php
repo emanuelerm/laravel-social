@@ -14,11 +14,7 @@
                     </div>
                     <div class="card-body">
                         <p>{{$post->description}}</p>
-<<<<<<< HEAD
-                        <small>{{$post->updated_at}}</small>
-=======
                         <small>{{$post->created_at->format('Y-m-d')}}</small>
->>>>>>> 54ce7293e10deeb5b0fd71629594c263529420c5
                     </div>
                 </div>
             </div>
