@@ -2,7 +2,7 @@ import './bootstrap';
 import '~resources/scss/app.scss';
 import * as bootstrap from 'bootstrap';
 import.meta.glob([
-    '../img/**'
+	'../img/**'
 ])
 
 document.querySelector("button[name='topBtn']").addEventListener("click", (scrollUp));
@@ -28,25 +28,34 @@ let directions = {
 function scrollUp() { carousel(directions.up); }
 function scrollDown() { carousel(directions.down); }
 
-function carousel(direction){
+
+function carousel(direction) {
 	// Input check
-	if(direction == directions.up || direction == directions.down){
+	if (direction == directions.up || direction == directions.down) {
 		focusImage.lastPosition = focusImage.currentPosition;
 
 		// Out of bounds check and fix to take the loop
-		if(direction == directions.up)
-			focusImage.currentPosition = (focusImage.currentPosition == 0) ? images.length-1 : focusImage.currentPosition-1;
+		if (direction == directions.up)
+			focusImage.currentPosition = (focusImage.currentPosition == 0) ? images.length - 1 : focusImage.currentPosition - 1;
 		else if (direction == directions.down)
-			focusImage.currentPosition = (focusImage.currentPosition == images.length-1) ? 0 : focusImage.currentPosition+1;
+			focusImage.currentPosition = (focusImage.currentPosition == images.length - 1) ? 0 : focusImage.currentPosition + 1;
 
 		// Update view
 		focusImage.carousel.getElementsByTagName("img")[focusImage.lastPosition].setAttribute("class", "my-none");
 		focusImage.carousel.getElementsByTagName("img")[focusImage.currentPosition].setAttribute("class", "my-active");
 
 		focusImage.rCarousel.getElementsByTagName("div")[focusImage.lastPosition].setAttribute("class", "op");
-		focusImage.rCarousel.getElementsByTagName("div")[focusImage.currentPosition].setAttribute("class", "r-active");               
+		focusImage.rCarousel.getElementsByTagName("div")[focusImage.currentPosition].setAttribute("class", "r-active");
 	}
 	else
 		console.log("Argomento incorrect");
-}
 
+};
+
+setInterval(scrollDown,2000)
+
+// 	setTimeout(1500)=>{for(let i = 0; i < 1000; i++){
+// 		console.log('ciao');
+// 		scrollDown()
+// 	};
+// }

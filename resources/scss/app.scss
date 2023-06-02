@@ -89,6 +89,10 @@ $fa-font-path: "../fonts/webfonts" !default;
 	opacity: 0.25;
 }
 
+*{
+	transition: all 1.7s;
+}
+
 @media screen and (min-width:581px) and (max-width:992px){
 	.carousel{
 		width: 60vw;
