@@ -22,6 +22,7 @@ Route::get('/', function () {
 Route::middleware(['auth', 'verified'])->name('admin.')->prefix('admin')->group(function(){
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
     Route::resource('posts', PostController::class);
+    Route::resource('users', ProfileController::class);
 });
 
 
