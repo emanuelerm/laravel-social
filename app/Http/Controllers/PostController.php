@@ -97,7 +97,7 @@ class PostController extends Controller
 			$data,
 			[
 				'title' => 'required|max:255|min:3',
-				'description' => 'required|min:50',
+				'description' => 'required|min:20',
 				'image' => 'required'
 			],
 			[
