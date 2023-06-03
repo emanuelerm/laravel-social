@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Post;
+use Illuminate\Support\Facades\Validator;
 class PostController extends Controller
 {
     /**
@@ -35,7 +36,7 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        $form_data = $request->all();
+        $form_data = $this->validation($request->all());
         $newPost = new Post();
         $newPost->fill($form_data);
         $newPost->save();
@@ -73,7 +74,7 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        $form_data = $request->all();
+        $form_data = $this->validation($request->all());
         $post->update($form_data);
         return redirect()->route('posts.show', $post->id);
     }
@@ -89,4 +90,25 @@ class PostController extends Controller
         $post->delete();
         return redirect()->route('posts.index')->with('message', "{$post->title} has been deleted");
     }
+
+    private function validation($data)
+	{
+		$validator = Validator::make(
+			$data,
+			[
+				'title' => 'required|max:255|min:3',
+				'description' => 'required|min:50',
+				'image' => 'required'
+			],
+			[
+				'title.required' => 'Il titolo è obbligatorio',
+				'title.max' => 'Il titolo non deve superare 255 caratteri',
+				'title.min' => 'Il titolo deve contenere almeno tre caratteri',
+				'description.min' => 'Il minimo dei caratteri accettati è 50',
+				'description.required' => 'questo campo è obbligatorio',
+				'image.required' => 'Devi inserire l\' url di un immagine presa da google'
+			]
+		)->validate();
+		return $validator;
+	}
 }
