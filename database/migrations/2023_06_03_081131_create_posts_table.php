@@ -16,9 +16,8 @@ return new class extends Migration
         Schema::create('posts', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('title', 255);
-            $table->mediumText('description', 255);
-            $table->string('image', 255);
-            $table->date('created');
+            $table->mediumText('description');
+            $table->string('image');
             $table->timestamps();
         });
     }
